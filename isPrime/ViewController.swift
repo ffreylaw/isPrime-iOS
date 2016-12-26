@@ -44,7 +44,7 @@ class ViewController: UIViewController {
         resultTextLabel.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 8).isActive = true
         resultTextLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         resultTextLabel.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -16).isActive = true
-        resultTextLabel.heightAnchor.constraint(equalToConstant: 128).isActive = true
+        resultTextLabel.heightAnchor.constraint(equalToConstant: 256).isActive = true
         
         inputContainerView.topAnchor.constraint(equalTo: resultTextLabel.bottomAnchor, constant: 8).isActive = true
         inputContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -58,14 +58,15 @@ class ViewController: UIViewController {
         inputTextField.heightAnchor.constraint(equalTo: inputContainerView.heightAnchor).isActive = true
         
         isPrimeButton.topAnchor.constraint(equalTo: inputContainerView.bottomAnchor, constant: 8).isActive = true
-        isPrimeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        isPrimeButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -16).isActive = true
+        isPrimeButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8).isActive = true
+        isPrimeButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1/2 ,constant: -12).isActive = true
         isPrimeButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        resetButton.topAnchor.constraint(equalTo: isPrimeButton.bottomAnchor, constant: 8).isActive = true
-        resetButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        resetButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -16).isActive = true
+        resetButton.topAnchor.constraint(equalTo: inputContainerView.bottomAnchor, constant: 8).isActive = true
+        resetButton.leftAnchor.constraint(equalTo: isPrimeButton.rightAnchor, constant: 8).isActive = true
+        resetButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1/2 ,constant: -12).isActive = true
         resetButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
     }
     
     func handleIsPrime() {
@@ -99,7 +100,7 @@ class ViewController: UIViewController {
     }
     
     func handleReset() {
-        resultTextLabel.backgroundColor = UIColor.black
+        resultTextLabel.backgroundColor = .black
         resultTextLabel.text = "isPrime"
         inputTextField.text = ""
     }
@@ -107,12 +108,12 @@ class ViewController: UIViewController {
     let resultTextLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = UIColor.black
+        label.backgroundColor = .black
         label.text = "isPrime"
-        label.textColor = UIColor.white
+        label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 32)
         label.textAlignment = NSTextAlignment.center
-        label.layer.borderWidth = 1
+        label.layer.borderWidth = 1 / UIScreen.main.scale
         label.layer.borderColor = UIColor.black.cgColor
         return label
     }()
@@ -120,10 +121,10 @@ class ViewController: UIViewController {
     let inputContainerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = .white
         view.layer.masksToBounds = true
         view.layer.borderColor = UIColor.black.cgColor
-        view.layer.borderWidth = 1
+        view.layer.borderWidth = 1 / UIScreen.main.scale
         return view
     }()
     
@@ -138,12 +139,12 @@ class ViewController: UIViewController {
     lazy var isPrimeButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor.white
+        button.backgroundColor = .white
         button.setTitle("isPrime", for: .normal)
-        button.setTitleColor(UIColor.black, for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.layer.borderColor = UIColor.black.cgColor
-        button.layer.borderWidth = 1
+        button.layer.borderWidth = 1 / UIScreen.main.scale
         button.addTarget(self, action: #selector(handleIsPrime), for: .touchUpInside)
         return button
     }()
@@ -151,12 +152,12 @@ class ViewController: UIViewController {
     lazy var resetButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = UIColor.lightGray
+        button.backgroundColor = .white
         button.setTitle("Reset", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.layer.borderColor = UIColor.black.cgColor
-        button.layer.borderWidth = 1
+        button.layer.borderWidth = 1 / UIScreen.main.scale
         button.addTarget(self, action: #selector(handleReset), for: .touchUpInside)
         return button
     }()
